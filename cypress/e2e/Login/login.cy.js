@@ -1,12 +1,25 @@
-const { PASSWORD, USERNAME } = require('../../Constrants/LoginConstaints');
-const { LoginPage } = require('../../PageObjects/Login');
-const loginPage = new LoginPage()
+const { PASSWORD, USERNAME } = require("../../Constraints/LoginConstaints");
+import loginData from '../../fixtures/loginData.json'
+const { LoginPage } = require("../../PageObjects/Login");
+const loginPage = new LoginPage();
 
-describe('Login Test', () => {
-  it('should log in successfully', () => {
-    cy.handleUncaughtException();
-   loginPage.loadLoginPage();
-   loginPage.login(USERNAME,PASSWORD);
-   cy.get('#nameofuser').should('contain',USERNAME)
+beforeEach(() => {
+  loginPage.loadLoginPage();
+});
+
+describe("Login Test", () => {
+  it("Login with valid username and passwprd", () => {
+    cy.
+    handleUncaughtException();
+    loginPage.login(USERNAME, PASSWORD);
+    cy.
+    get("#nameofuser").should("contain", USERNAME);
+  });
+  it("Login with invalid credentials", () => {
+    cy.
+    handleUncaughtException();
+    loginPage.login(loginData.invalidUser, loginData.invalidPassword);
+    cy.
+    get("#nameofuser").should("contain", USERNAME);
   });
 });
