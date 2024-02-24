@@ -3,28 +3,32 @@ export class LoginPage{
         loginPage : '#login2',
         usernameLocator : '#loginusername',
         passwordLocator : '#loginpassword',
-        loginBtnLocator : '#logInModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary'
+        loginBtnLocator : '#logInModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary',
+        loginButton : '#logInModal .modal-footer .btn-primary'
     }
 
     loadLoginPage(){
-        cy.
-        log('Navigate to login page')
-        cy.
-        visit('/')
-        cy.
-        get(this.locators.loginPage).click({force:true})
+        cy
+        .log('Navigate to login page')
+        cy
+        .visit('/')
+        cy
+        .get(this.locators.loginPage)
+        .should('be.visible').trigger('click',{force:true});
+    }
+
+    clickLogin(){
+        cy.log("Clicking login button");
+        cy.get(this.locators.loginButton).should('be.be.visible').trigger('click',{force:true})
 
     }
     
-    login(username,password){
+    enterCredentials(username,password){
         cy.
         log('Inputting username and password in fields and clicking login button')
         cy.
-        get(this.locators.usernameLocator).type(username,{force:true})
+        get(this.locators.usernameLocator).should('be.visible').type(username?username:'',{force:true})
         cy.
-        get(this.locators.passwordLocator).type(password,{force:true})
-        cy.
-        get(this.locators.loginBtnLocator)
-        .click()
+        get(this.locators.passwordLocator).should('be.visible').type(password?password:'',{force:true})
     }
 }
