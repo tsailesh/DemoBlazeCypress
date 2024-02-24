@@ -6,6 +6,8 @@ const {
   INVALID_USERNAME,
 } = require("../../Constraints/LoginConstaints");
 import loginData from "../../fixtures/loginData.json";
+const {LoginPage} = require("../../PageObjects/Login")
+const loginPage = new LoginPage();
 
 beforeEach(() => {
   loginPage.loadLoginPage();
