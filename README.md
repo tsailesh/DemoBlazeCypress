@@ -11,6 +11,6 @@ Used Files to store data.
 3. Clone project on your device
 4. Open the cloned project on VS Code
 5. Install cypress on the directory where project is cloned. (~/.DemoBlazeCypress)
-     npm install cypress --save-dev
+    :: npm install cypress --save-dev
 6. Run cypress tests
-   npx cypress open
+  :: npx cypress open
